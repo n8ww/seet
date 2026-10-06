@@ -45,25 +45,6 @@ $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
 }));
 $('#toTop').addEventListener('click', () => scrollTo(0, { duration: 2.2 }));
 
-/* ---------- Cursor ---------- */
-const cursor = $('#cursor');
-const mouse = { x: innerWidth / 2, y: innerHeight / 2 };
-if (FINE) {
-  const dot = $('.cursor__dot'), ring = $('.cursor__ring'), label = $('.cursor__label');
-  const dx = gsap.quickTo(dot, 'x', { duration: .12, ease: 'power3' }), dy = gsap.quickTo(dot, 'y', { duration: .12, ease: 'power3' });
-  const rx = gsap.quickTo(ring, 'x', { duration: .55, ease: 'power3' }), ry = gsap.quickTo(ring, 'y', { duration: .55, ease: 'power3' });
-  addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); });
-  document.addEventListener('mouseleave', () => cursor.classList.add('is-hidden'));
-  document.addEventListener('mouseenter', () => cursor.classList.remove('is-hidden'));
-  document.addEventListener('mouseover', e => {
-    const lab = e.target.closest('[data-cursor-label]');
-    const hov = e.target.closest('a,button,[data-cursor],label,input,textarea');
-    cursor.classList.toggle('is-label', !!lab);
-    cursor.classList.toggle('is-hover', !lab && !!hov);
-    if (lab) label.textContent = lab.dataset.cursorLabel === 'seet' ? (RTL ? 'صيت' : 'SEET') : lab.dataset.cursorLabel;
-  });
-} else cursor.remove();
-
 /* ---------- Magnetic ---------- */
 if (FINE) $$('[data-magnetic]').forEach(el => {
   const k = parseFloat(el.dataset.magnetic) || .3;
@@ -127,15 +108,37 @@ const tick = () => { clock.textContent = new Intl.DateTimeFormat('en-GB', { time
 tick(); setInterval(tick, 1000);
 
 /* ---------- Brief → WhatsApp ---------- */
-$('#briefForm').addEventListener('submit', e => {
+const form = $('#briefForm');
+const phoneOk = v => { const d = v.replace(/[^\d+]/g, '').replace(/^\+?966/, '0').replace(/^5/, '05'); return /^05\d{8}$/.test(d) || /^\+?\d{8,15}$/.test(v.replace(/[\s-]/g, '')); };
+const toLatinDigits = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+function setErr(input, bad) { input.parentNode.classList.toggle('is-error', bad); input.setAttribute('aria-invalid', bad); }
+['input', 'blur'].forEach(ev => {
+  form.name.addEventListener(ev, () => { if (form.name.parentNode.classList.contains('is-error')) setErr(form.name, !form.name.value.trim()); });
+  form.phone.addEventListener(ev, () => { if (form.phone.parentNode.classList.contains('is-error')) setErr(form.phone, !phoneOk(toLatinDigits(form.phone.value))); });
+});
+form.addEventListener('submit', e => {
   e.preventDefault();
-  const f = e.currentTarget;
-  const services = $$('#chips input:checked').map(i => DICT[i.value]).join('، ');
-  const L = RTL
-    ? ['مرحبًا صيت 👋', `الاسم: ${f.name.value}`, `الجوال: ${f.phone.value}`, `العلامة: ${f.company.value}`, `الخدمات: ${services}`, `التفاصيل: ${f.msg.value}`]
-    : ['Hello SEET 👋', `Name: ${f.name.value}`, `Phone: ${f.phone.value}`, `Brand: ${f.company.value}`, `Services: ${services}`, `Details: ${f.msg.value}`];
-  if (!f.name.value.trim()) { f.name.focus(); gsap.fromTo(f.name.parentNode, { x: -8 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' }); return; }
-  window.open('https://wa.me/966533347092?text=' + encodeURIComponent(L.filter(l => !/: $/.test(l)).join('\n')), '_blank', 'noopener');
+  const name = form.name.value.trim(), phone = toLatinDigits(form.phone.value.trim());
+  const badName = !name, badPhone = !phoneOk(phone);
+  setErr(form.name, badName); setErr(form.phone, badPhone);
+  if (badName || badPhone) {
+    const first = badName ? form.name : form.phone;
+    first.focus({ preventScroll: true });
+    gsap.fromTo(first.parentNode, { x: -8 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' });
+    return;
+  }
+  const services = $$('#chips input:checked').map(i => DICT[i.value]).join(RTL ? '، ' : ', ');
+  const rows = RTL
+    ? [['الاسم', name], ['الجوال', phone], ['العلامة', form.company.value.trim()], ['الخدمات', services], ['التفاصيل', form.msg.value.trim()]]
+    : [['Name', name], ['Phone', phone], ['Brand', form.company.value.trim()], ['Services', services], ['Details', form.msg.value.trim()]];
+  const text = [RTL ? 'مرحبًا صيت، أبغى أبدأ مشروع معكم:' : 'Hello SEET, I would like to start a project:', '']
+    .concat(rows.filter(r => r[1]).map(r => `${r[0]}: ${r[1]}`)).join('\n');
+  const url = 'https://wa.me/966533347092?text=' + encodeURIComponent(text);
+  // anchor click survives popup blockers better than window.open; fall back to same-tab navigation
+  const a = Object.assign(document.createElement('a'), { href: url, target: '_blank', rel: 'noopener' });
+  document.body.appendChild(a); a.click(); a.remove();
+  $('#formOk').textContent = DICT['form.ok'];
+  form.reset();
 });
 
 /* =========================================================

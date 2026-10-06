@@ -50,7 +50,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=2">
 <script>
   // choose language before paint: ?lang= → saved → Arabic
   (function(){var q=new URLSearchParams(location.search).get('lang');var l=q||(function(){try{return localStorage.getItem('seet-lang')}catch(e){}})()||'ar';if(l!=='en')l='ar';document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.documentElement.classList.add('is-loading')})();
@@ -73,12 +73,9 @@
   <div class="loader__count"><span id="loaderCount">0</span></div>
 </div>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label"></span></div><div class="cursor__dot"></div></div>
-
 <!-- HEADER -->
 <header class="hd" id="hd">
-  <a href="#home" class="hd__brand" data-cursor><img src="assets/logo.png" alt="SEET — صيت"><span class="mono">Said · Seen</span></a>
+  <a href="#home" class="hd__brand"><img src="assets/logo.png" alt="SEET — صيت"><span class="mono">Said · Seen</span></a>
   <nav class="hd__nav mono">
     <a href="#about"><span data-i18n="nav.about"></span><span data-i18n="nav.about"></span></a>
     <a href="#services"><span data-i18n="nav.services"></span><span data-i18n="nav.services"></span></a>
@@ -87,7 +84,7 @@
     <a href="#contact"><span data-i18n="nav.contact"></span><span data-i18n="nav.contact"></span></a>
   </nav>
   <div class="hd__right">
-    <button class="lang-btn mono" id="langBtn" data-cursor></button>
+    <button class="lang-btn mono" id="langBtn"></button>
     <a href="#brief" class="pill mono" data-magnetic><span class="dot"></span><span data-i18n="cta.talk"></span></a>
     <button class="burger" id="burger" aria-label="Menu" data-magnetic><i></i></button>
   </div>
@@ -117,7 +114,7 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero__media" id="heroMedia" data-cursor-label="seet">
+  <div class="hero__media" id="heroMedia">
     <video id="heroVideo" src="assets/hero.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline preload="auto"></video>
     <canvas id="heroGL"></canvas>
     <div class="hero__shade"></div>
@@ -165,11 +162,11 @@
     <p class="partners__p" data-reveal data-i18n="partners.p"></p>
   </div>
   <div class="plogos" dir="ltr">
-    <div class="plogo" data-reveal data-cursor><span class="pw pw--tiktok">TikTok</span><span class="mono">Marketing Partner</span></div>
-    <div class="plogo" data-reveal data-cursor><span class="pw pw--meta"><svg viewBox="0 0 64 32" aria-hidden="true"><path d="M8 24c0-8 5-16 10-16 6 0 10 9 14 9s8-9 14-9c5 0 10 8 10 16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>Meta</span><span class="mono">Business Partner</span></div>
-    <div class="plogo" data-reveal data-cursor><span class="pw pw--snap">Snapchat</span><span class="mono">Ads Partner</span></div>
-    <div class="plogo" data-reveal data-cursor><span class="pw pw--zid">zid</span><span class="mono">E-commerce Partner</span></div>
-    <div class="plogo" data-reveal data-cursor><span class="pw pw--google"><b>G</b>oogle</span><span class="mono">Partners</span></div>
+    <div class="plogo" data-reveal><span class="pw pw--tiktok">TikTok</span><span class="mono">Marketing Partner</span></div>
+    <div class="plogo" data-reveal><span class="pw pw--meta"><svg viewBox="0 0 64 32" aria-hidden="true"><path d="M8 24c0-8 5-16 10-16 6 0 10 9 14 9s8-9 14-9c5 0 10 8 10 16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>Meta</span><span class="mono">Business Partner</span></div>
+    <div class="plogo" data-reveal><span class="pw pw--snap">Snapchat</span><span class="mono">Ads Partner</span></div>
+    <div class="plogo" data-reveal><span class="pw pw--zid">zid</span><span class="mono">E-commerce Partner</span></div>
+    <div class="plogo" data-reveal><span class="pw pw--google"><b>G</b>oogle</span><span class="mono">Partners</span></div>
   </div>
 </section>
 
@@ -192,31 +189,31 @@
       <div class="services__count mono"><span id="svcNow">01</span> / 06</div>
     </div>
     <div class="services__track" id="servicesTrack">
-      <article class="scard" data-cursor>
+      <article class="scard">
         <div class="scard__top"><span class="mono">01</span><span class="scard__icon"><svg viewBox="0 0 24 24"><path d="M12 3l9 9-9 9-9-9z"/><path d="M12 8l4 4-4 4-4-4z"/></svg></span></div>
         <div><h3 class="display" data-i18n="svc.1.t"></h3><p data-i18n="svc.1.p"></p><div class="tags mono" data-i18n="svc.1.tags"></div></div>
       </article>
-      <article class="scard" data-cursor>
+      <article class="scard">
         <div class="scard__top"><span class="mono">02</span><span class="scard__icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span></div>
         <div><h3 class="display" data-i18n="svc.2.t"></h3><p data-i18n="svc.2.p"></p><div class="tags mono" data-i18n="svc.2.tags"></div></div>
       </article>
-      <article class="scard" data-cursor>
+      <article class="scard">
         <div class="scard__top"><span class="mono">03</span><span class="scard__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span></div>
         <div><h3 class="display" data-i18n="svc.3.t"></h3><p data-i18n="svc.3.p"></p><div class="tags mono" data-i18n="svc.3.tags"></div></div>
       </article>
-      <article class="scard" data-cursor>
+      <article class="scard">
         <div class="scard__top"><span class="mono">04</span><span class="scard__icon"><svg viewBox="0 0 24 24"><path d="M3 11v3l12 5V6L3 11z"/><path d="M15 9a4 4 0 010 6M7 15v4"/></svg></span></div>
         <div><h3 class="display" data-i18n="svc.4.t"></h3><p data-i18n="svc.4.p"></p><div class="tags mono" data-i18n="svc.4.tags"></div></div>
       </article>
-      <article class="scard" data-cursor>
+      <article class="scard">
         <div class="scard__top"><span class="mono">05</span><span class="scard__icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span></div>
         <div><h3 class="display" data-i18n="svc.5.t"></h3><p data-i18n="svc.5.p"></p><div class="tags mono" data-i18n="svc.5.tags"></div></div>
       </article>
-      <article class="scard" data-cursor>
+      <article class="scard">
         <div class="scard__top"><span class="mono">06</span><span class="scard__icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M8 9l-2 2 2 2M16 9l2 2-2 2"/></svg></span></div>
         <div><h3 class="display" data-i18n="svc.6.t"></h3><p data-i18n="svc.6.p"></p><div class="tags mono" data-i18n="svc.6.tags"></div></div>
       </article>
-      <a href="#brief" class="scard scard--cta" data-cursor>
+      <a href="#brief" class="scard scard--cta">
         <h3 class="display" data-i18n="svc.cta.t"></h3>
         <span class="arrow">→</span>
       </a>
@@ -234,7 +231,7 @@
       <h2 class="display" data-split data-i18n="tech.title"></h2>
       <p class="tech__p" data-reveal data-i18n="tech.p"></p>
     </div>
-    <div class="mock" id="mock" data-cursor>
+    <div class="mock" id="mock">
       <div class="mock__win">
         <div class="mock__bar"><i></i><i></i><i></i><span class="mono" dir="ltr">wekad.sa</span></div>
         <div class="mock__body">
@@ -270,7 +267,7 @@
     <div class="impact__inner">
       <div class="impact__a">
         <div class="label mono"><i>(04)</i><span data-i18n="impact.label"></span><span class="impact__kicker" data-i18n="impact.kicker"></span></div>
-        <div class="impact__num display" dir="ltr"><span class="plus">+</span><span id="treeCount">0</span></div>
+        <div class="impact__num display" dir="ltr"><span id="treeCount">0</span></div>
         <div class="impact__unit display it" data-i18n="impact.unit"></div>
       </div>
       <div class="impact__b">
@@ -290,7 +287,7 @@
       <h2 class="growth__title display" data-split data-i18n="growth.title"></h2>
       <p class="growth__p" data-reveal data-i18n="growth.p"></p>
     </div>
-    <div class="chart" id="chart" data-cursor>
+    <div class="chart" id="chart">
       <svg viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="gStroke" x1="0" x2="1"><stop offset="0" stop-color="#d8c4a6"/><stop offset="1" stop-color="#a9c7e8"/></linearGradient>
@@ -357,7 +354,7 @@
 <!-- SHOWREEL -->
 <section class="reel" id="reel">
   <div class="reel__sticky">
-    <div class="reel__frame" id="reelFrame" data-cursor-label="seet">
+    <div class="reel__frame" id="reelFrame">
       <video id="reelVideo" src="assets/hero.mp4" muted loop playsinline autoplay preload="metadata"></video>
     </div>
     <div class="reel__words display"><span class="r1" data-i18n="reel.l"></span><span class="r2" data-i18n="reel.r"></span></div>
@@ -376,12 +373,12 @@
       <svg class="waves" viewBox="0 0 600 80" preserveAspectRatio="none" aria-hidden="true"><path id="wave1" d="M0 40 Q 75 10 150 40 T 300 40 T 450 40 T 600 40"/><path id="wave2" d="M0 55 Q 75 25 150 55 T 300 55 T 450 55 T 600 55"/></svg>
     </div>
     <ul class="cities">
-      <li class="city is-home" data-reveal data-cursor><span class="mono">26.28°N</span><b class="display" data-i18n="east.c1"></b><em class="mono" data-i18n="east.home"></em></li>
-      <li class="city" data-reveal data-cursor><span class="mono">26.43°N</span><b class="display" data-i18n="east.c2"></b><em class="mono">↗</em></li>
-      <li class="city" data-reveal data-cursor><span class="mono">26.29°N</span><b class="display" data-i18n="east.c3"></b><em class="mono">↗</em></li>
-      <li class="city" data-reveal data-cursor><span class="mono">25.38°N</span><b class="display" data-i18n="east.c4"></b><em class="mono">↗</em></li>
-      <li class="city" data-reveal data-cursor><span class="mono">27.01°N</span><b class="display" data-i18n="east.c5"></b><em class="mono">↗</em></li>
-      <li class="city" data-reveal data-cursor><span class="mono">26.56°N</span><b class="display" data-i18n="east.c6"></b><em class="mono">↗</em></li>
+      <li class="city is-home" data-reveal><span class="mono">26.28°N</span><b class="display" data-i18n="east.c1"></b><em class="mono" data-i18n="east.home"></em></li>
+      <li class="city" data-reveal><span class="mono">26.43°N</span><b class="display" data-i18n="east.c2"></b><em class="mono">↗</em></li>
+      <li class="city" data-reveal><span class="mono">26.29°N</span><b class="display" data-i18n="east.c3"></b><em class="mono">↗</em></li>
+      <li class="city" data-reveal><span class="mono">25.38°N</span><b class="display" data-i18n="east.c4"></b><em class="mono">↗</em></li>
+      <li class="city" data-reveal><span class="mono">27.01°N</span><b class="display" data-i18n="east.c5"></b><em class="mono">↗</em></li>
+      <li class="city" data-reveal><span class="mono">26.56°N</span><b class="display" data-i18n="east.c6"></b><em class="mono">↗</em></li>
     </ul>
   </div>
   <div class="tiers">
@@ -411,7 +408,7 @@
       <div class="ccard__logo"><img src="assets/client-ona.png" alt="ONA Roastery"></div>
       <div class="ccard__meta mono"><div><b>ONA Roastery</b><span data-i18n="clients.ona"></span></div><span>02</span></div>
     </div>
-    <a href="#brief" class="ccard ccard--next" data-tilt data-reveal data-cursor>
+    <a href="#brief" class="ccard ccard--next" data-tilt data-reveal>
       <span class="plus">+</span>
       <h3 class="display" data-i18n="clients.next"></h3>
       <span class="mono" style="color:var(--muted)" data-i18n="clients.nextp"></span>
@@ -428,22 +425,26 @@
       <p data-i18n="form.p"></p>
     </div>
     <form class="form" id="briefForm" novalidate>
-      <div class="field"><input id="fName" name="name" placeholder=" " required autocomplete="name"><label for="fName" data-i18n="form.name"></label></div>
-      <div class="field"><input id="fPhone" name="phone" type="tel" placeholder=" " dir="ltr" autocomplete="tel"><label for="fPhone" data-i18n="form.phone"></label></div>
+      <div class="field"><input id="fName" name="name" placeholder=" " required autocomplete="name"><label for="fName" data-i18n="form.name"></label><small class="field__err" data-i18n="form.err.name"></small></div>
+      <div class="field"><input id="fPhone" name="phone" type="tel" inputmode="tel" placeholder=" " dir="ltr" autocomplete="tel"><label for="fPhone" data-i18n="form.phone"></label><small class="field__err" data-i18n="form.err.phone"></small></div>
       <div class="field field--full"><input id="fCo" name="company" placeholder=" " autocomplete="organization"><label for="fCo" data-i18n="form.company"></label></div>
-      <div class="field field--full field--select">
-        <label data-i18n="form.service"></label>
+      <fieldset class="group field--full">
+        <legend class="group__title mono" data-i18n="form.service"></legend>
         <div class="chips" id="chips">
-          <label><input type="checkbox" value="svc.1.t"><span data-i18n="svc.1.t"></span></label>
-          <label><input type="checkbox" value="svc.2.t"><span data-i18n="svc.2.t"></span></label>
-          <label><input type="checkbox" value="svc.3.t"><span data-i18n="svc.3.t"></span></label>
-          <label><input type="checkbox" value="svc.4.t"><span data-i18n="svc.4.t"></span></label>
-          <label><input type="checkbox" value="svc.5.t"><span data-i18n="svc.5.t"></span></label>
-          <label><input type="checkbox" value="form.opt.all"><span data-i18n="form.opt.all"></span></label>
+          <label class="chip"><input type="checkbox" value="svc.1.t"><span data-i18n="svc.1.t"></span></label>
+          <label class="chip"><input type="checkbox" value="svc.2.t"><span data-i18n="svc.2.t"></span></label>
+          <label class="chip"><input type="checkbox" value="svc.3.t"><span data-i18n="svc.3.t"></span></label>
+          <label class="chip"><input type="checkbox" value="svc.4.t"><span data-i18n="svc.4.t"></span></label>
+          <label class="chip"><input type="checkbox" value="svc.5.t"><span data-i18n="svc.5.t"></span></label>
+          <label class="chip"><input type="checkbox" value="svc.6.t"><span data-i18n="svc.6.t"></span></label>
+          <label class="chip"><input type="checkbox" value="form.opt.all"><span data-i18n="form.opt.all"></span></label>
         </div>
+      </fieldset>
+      <div class="field field--full"><textarea id="fMsg" name="msg" placeholder=" " rows="4"></textarea><label for="fMsg" data-i18n="form.msg"></label></div>
+      <div class="form__foot">
+        <button type="submit" class="form__send"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span data-i18n="form.send"></span></button>
+        <p class="form__ok" id="formOk" role="status" aria-live="polite"></p>
       </div>
-      <div class="field field--full"><textarea id="fMsg" name="msg" placeholder=" "></textarea><label for="fMsg" data-i18n="form.msg"></label></div>
-      <button type="submit" class="form__send" data-magnetic><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span data-i18n="form.send"></span></button>
     </form>
   </div>
 </section>
@@ -487,7 +488,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
-<script src="js/i18n.js"></script>
-<script type="module" src="js/main.js"></script>
+<script src="js/i18n.js?v=2"></script>
+<script type="module" src="js/main.js?v=2"></script>
 </body>
 </html>
