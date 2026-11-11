@@ -3,7 +3,7 @@
    spans 408×616 px centred at (372, 634) → centred horizontally after a −1.67% shift.
    still 900×1200: tray bbox x 244–654, y 272–916 (410×644, centre 449,594). */
 :root {
-  --bg: #000;
+  --bg: #3e1913;
   --ink: #fff;
   --orange: #ED532B;
   --silver: #c9cbcc;
@@ -39,6 +39,10 @@ p, h1, dl, dd { margin: 0; }
 .wordmark--orange { color: var(--orange); }
 
 /* ── chrome ─────────────────────────────────────────────── */
+.mark {
+  position: fixed; left: var(--gutter); top: calc(env(safe-area-inset-top) + 18px); z-index: 20;
+  width: clamp(76px, 9vw, 112px); height: auto; pointer-events: none; user-select: none; -webkit-user-select: none;
+}
 .chrome {
   position: fixed; right: var(--gutter); bottom: calc(env(safe-area-inset-bottom) + 14px); z-index: 20;
   opacity: 0; pointer-events: none;
@@ -53,7 +57,7 @@ p, h1, dl, dd { margin: 0; }
 .hero__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .stage { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; user-select: none; -webkit-user-select: none; }
 .stage__frame {
-  position: relative; height: calc(100% * var(--stage-zoom)); aspect-ratio: 9 / 16; flex: none;
+  position: relative; height: calc(100% * var(--stage-zoom)); aspect-ratio: 9 / 16; flex: none; background: var(--bg);
   transform: translateZ(0);
 }
 .blade {
@@ -66,6 +70,7 @@ p, h1, dl, dd { margin: 0; }
 .film {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   transform: translateX(-1.67%); opacity: 0; will-change: opacity; pointer-events: none;
+  mix-blend-mode: lighten;
 }
 .tray {
   position: absolute; left: calc(var(--tray-cx) - var(--tray-w) / 2); top: calc(var(--tray-cy) - var(--tray-h) / 2); width: var(--tray-w); height: var(--tray-h);
@@ -109,7 +114,7 @@ p, h1, dl, dd { margin: 0; }
 }
 .vignette {
   position: absolute; inset: -2px; pointer-events: none;
-  background: radial-gradient(ellipse 70% 62% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.75) 100%);
+  background: radial-gradient(ellipse 70% 62% at 50% 50%, rgba(62,25,19,0) 55%, rgba(62,25,19,.85) 100%);
 }
 .scroll-cue { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 30px); transform: translateX(-50%); opacity: 0; }
 .scroll-cue i { display: block; width: 1px; height: 30px; background: rgba(232,232,232,.4); transform: scaleY(0); transform-origin: top; }
